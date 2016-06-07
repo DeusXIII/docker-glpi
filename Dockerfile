@@ -17,6 +17,7 @@ RUN apt-get update && apt-get install -y \
   curl \
   php5-curl \
   php5-gd \
+  php5-snmp \
   && rm -rf /var/lib/apt/lists/*
   
 # Activation module rewrite et arrêt d'Apache
