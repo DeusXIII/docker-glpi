@@ -6,11 +6,10 @@
 
 APACHE_DIR="/var/www/html"
 GLPI_DIR="${APACHE_DIR}/glpi"
-GLPI_UPDATE="${APACHE_DIR}/glpi/is_ok"
 
 ### INSTALL GLPI IF NOT INSTALLED ALREADY ######################################
 
-if [ "$(ls -A $GLPI_UPDATE)" ]; then
+if [ $GLPI_UPDATE = "false" ]; then
   echo "GLPI is already installed at ${GLPI_DIR}"
 else
   echo '-----------> Install GLPI'
@@ -18,7 +17,6 @@ else
   wget -O /tmp/glpi.tar.gz $GLPI_SOURCE_URL --no-check-certificate
   tar -C $APACHE_DIR -xzf /tmp/glpi.tar.gz
   chown -R www-data $GLPI_DIR
-  touch $GLPI_UPDATE
 fi
 
 ### REMOVE THE DEFAULT INDEX.HTML TO LET HTACCESS REDIRECTION ##################
